@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Reviews | Momen Saleh - Testimonials</title>
+    <link rel="stylesheet" href="momen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* تنسيقات خاصة بصفحة جميع الشهادات */
+        .testimonials-header {
+            padding: 120px 0 40px;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent, rgba(77, 166, 255, 0.05));
+        }
+        
+        .archive-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 40px 0 50px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .testimonials-grid {
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 25px;
+        }
+        
+        .filter-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 40px 0 30px;
+            padding: 15px 25px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 60px;
+            border: 1px solid var(--glass-border);
+        }
+        
+        .results-count {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .results-count span {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .works-filter {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 0;
+        }
+        
+        .filter-btn {
+            padding: 8px 20px;
+            border-radius: 30px;
+            background: transparent;
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .sort-select {
+            padding: 10px 25px;
+            border-radius: 30px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        
+        .flip-card {
+            height: 520px;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 50px 0 30px;
+            flex-wrap: wrap;
+        }
+        
+        .page-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .page-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .page-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+        }
+        
+        @media (max-width: 1200px) {
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        
+        @media (max-width: 768px) {
+            .testimonials-grid { grid-template-columns: 1fr !important; }
+            .filter-bar { flex-direction: column; gap: 15px; }
+            .works-filter { justify-content: center; }
+            .archive-stats { gap: 30px; }
+            .stat-number { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="logo">
+                <span class="logo-text">Momen</span>
+                <span class="logo-dot"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#works" class="nav-link">Works</a></li>
+                <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                
+                <button class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== BREADCRUMBS (نفس تصميم all-projects بالضبط) ===== -->
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-container">
+            <ul class="breadcrumb-list">
+                <li class="breadcrumb-item">
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-separator">
+                    <i class="fas fa-chevron-right"></i>
+                </li>
+                <li class="breadcrumb-item active">
+                    <i class="fas fa-comment-dots"></i>
+                    <span>Client Reviews</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="testimonials-header">
+        <div class="container">
+            <div class="hero-badge glass-effect" style="margin-top: 0;">
+                <span>💬 Client Reviews</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">What Clients Say</span>
+                <span class="title-line"><span class="title-gradient">About My Work</span></span>
+            </h1>
+            <p class="hero-description" style="max-width: 600px; margin: 20px auto;">
+                30+ happy clients from around the world share their experience working with me
+            </p>
+            
+            <!-- إحصائيات سريعة -->
+            <div class="archive-stats">
+                <div class="stat-item">
+                    <div class="stat-number">4.9</div>
+                    <div class="stat-label">Average Rating</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">32</div>
+                    <div class="stat-label">Total Reviews</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Section -->
+    <section class="testimonials-section" style="padding-top: 0;">
+        <div class="container">
+            <!-- Filter Bar متطور -->
+            <div class="filter-bar">
+                <div class="results-count">
+                    Showing <span id="visibleCount">0</span> of <span id="totalCount">32</span> reviews
+                </div>
+                
+                <!-- فلتر حسب نوع المشروع -->
+                <div class="works-filter" style="margin: 0;">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="graphic">Graphic</button>
+                    <button class="filter-btn" data-filter="ui">UI/UX</button>
+                    <button class="filter-btn" data-filter="branding">Branding</button>
+                </div>
+                
+                <select class="sort-select" id="sortSelect" onchange="sortBy(this.value)">
+                    <option value="recent">Most Recent</option>
+                    <option value="highest">Highest Rated</option>
+                    <option value="oldest">Oldest First</option>
+                </select>
+            </div>
+
+            <!-- Testimonials Grid -->
+            <div class="testimonials-grid" id="testimonialsGrid"></div>
+            
+            <!-- Pagination -->
+            <div class="pagination" id="pagination"></div>
+            
+            <!-- Back to Home -->
+            <div style="text-align: center; margin: 40px 0;">
+                <a href="index.html" class="btn btn-secondary glass-effect" style="padding: 15px 40px;">
+                    <i class="fas fa-arrow-left" style="margin-right: 10px;"></i>
+                    <span>Back to Home</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logoo">
+                        <span class="logoo-text">Momen</span>
+                        <span class="logoo-dot"></span>
+                    </div>
+                    <p>Creating beautiful digital experiences that make a difference.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html#home">Home</a></li>
+                            <li><a href="index.html#works">Works</a></li>
+                            <li><a href="index.html#testimonials">Testimonials</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">UI/UX Design</a></li>
+                            <li><a href="#">Graphic Design</a></li>
+                            <li><a href="#">Brand Identity</a></li>
+                            <li><a href="#">Web Design</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Momen Saleh All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="momen.js"></script>
+
+    <script>
+        // ===== بيانات 30+ شهادة =====
+        const allTestimonials = [
+            // Graphic Design
+            { 
+                id: 1, 
+                name: "Sarah Johnson", 
+                rating: 5.0, 
+                text: "Working with Momen was exceptional. He perfectly captured our brand essence and delivered professional designs beyond expectations.",
+                position: "Creative Director", 
+                company: "StyleBrand", 
+                image: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=200", 
+                year: "2024", 
+                location: "New York, USA", 
+                project: "Brand Identity",
+                category: "graphic"
+            },
+            { 
+                id: 2, 
+                name: "Lisa Anderson", 
+                rating: 5.0, 
+                text: "Momen is a true professional. He understood our vision immediately and delivered designs that our clients absolutely love.",
+                position: "Marketing Director", 
+                company: "Global Media", 
+                image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200", 
+                year: "2023", 
+                location: "Toronto, Canada", 
+                project: "Social Media",
+                category: "graphic"
+            },
+            { 
+                id: 3, 
+                name: "Mohammed Al Ali", 
+                rating: 5.0, 
+                text: "One of the best designers I've worked with. His creativity and attention to detail are outstanding.",
+                position: "Founder", 
+                company: "TechStart", 
+                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200", 
+                year: "2024", 
+                location: "Dubai, UAE", 
+                project: "Branding",
+                category: "graphic"
+            },
+            { 
+                id: 4, 
+                name: "Nadia Hassan", 
+                rating: 4.5, 
+                text: "Very creative and professional. Would definitely work with him again.",
+                position: "Brand Manager", 
+                company: "BeautyCo", 
+                image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200", 
+                year: "2024", 
+                location: "Cairo, Egypt", 
+                project: "Packaging",
+                category: "graphic"
+            },
+            { 
+                id: 5, 
+                name: "James Wilson", 
+                rating: 4.5, 
+                text: "Excellent communication and design skills. Delivered exactly what we needed.",
+                position: "Marketing Head", 
+                company: "Digital Agency", 
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200", 
+                year: "2023", 
+                location: "Sydney, Australia", 
+                project: "Brand Identity",
+                category: "graphic"
+            },
+            { 
+                id: 6, 
+                name: "Sophie Turner", 
+                rating: 4.5, 
+                text: "Momen has a great eye for detail. The final product was polished and professional.",
+                position: "Art Director", 
+                company: "Creative Studio", 
+                image: "https://images.unsplash.com/photo-1494790108777-286e1b1e7b9f?w=200", 
+                year: "2024", 
+                location: "Paris, France", 
+                project: "Print Design",
+                category: "graphic"
+            },
+            { 
+                id: 7, 
+                name: "Fatima Al Zahra", 
+                rating: 5.0, 
+                text: "Momen delivered beyond our expectations. The branding package was comprehensive and beautifully designed.",
+                position: "Brand Manager", 
+                company: "Luxury Goods", 
+                image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200", 
+                year: "2023", 
+                location: "Riyadh, KSA", 
+                project: "Branding",
+                category: "graphic"
+            },
+            { 
+                id: 8, 
+                name: "Maria Garcia", 
+                rating: 5.0, 
+                text: "The illustrations Momen created for our campaign were stunning.",
+                position: "Creative Director", 
+                company: "AdAgency", 
+                image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200", 
+                year: "2023", 
+                location: "Madrid, Spain", 
+                project: "Illustration",
+                category: "graphic"
+            },
+            { 
+                id: 9, 
+                name: "Layla Mahmoud", 
+                rating: 4.0, 
+                text: "Professional work, good communication. The packaging design was well received.",
+                position: "Product Developer", 
+                company: "Natural Products", 
+                image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200", 
+                year: "2023", 
+                location: "Casablanca, Morocco", 
+                project: "Packaging",
+                category: "graphic"
+            },
+            { 
+                id: 10, 
+                name: "Zainab Al Said", 
+                rating: 5.0, 
+                text: "The illustrations for our children's book are magical. He brought our characters to life!",
+                position: "Author", 
+                company: "Kids Stories", 
+                image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200", 
+                year: "2023", 
+                location: "Muscat, Oman", 
+                project: "Illustration",
+                category: "graphic"
+            },
+            
+            // UI/UX Design
+            { 
+                id: 11, 
+                name: "Michael Chen", 
+                rating: 5.0, 
+                text: "Momen's UX design transformed our app completely. 40% increase in engagement.",
+                position: "Product Manager", 
+                company: "InnovateApp", 
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200", 
+                year: "2024", 
+                location: "London, UK", 
+                project: "UX Design",
+                category: "ui"
+            },
+            { 
+                id: 12, 
+                name: "Emma Watson", 
+                rating: 5.0, 
+                text: "Momen redesigned our e-commerce platform. Sales increased by 50% in the first month.",
+                position: "E-commerce Manager", 
+                company: "FashionHub", 
+                image: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=200", 
+                year: "2023", 
+                location: "London, UK", 
+                project: "UI/UX",
+                category: "ui"
+            },
+            { 
+                id: 13, 
+                name: "John Smith", 
+                rating: 5.0, 
+                text: "His ability to translate complex requirements into beautiful designs is remarkable.",
+                position: "CTO", 
+                company: "FinTech Ltd", 
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200", 
+                year: "2024", 
+                location: "Singapore", 
+                project: "Mobile App",
+                category: "ui"
+            },
+            { 
+                id: 14, 
+                name: "Alex Chen", 
+                rating: 5.0, 
+                text: "Working with Momen was a pleasure. He's responsive, creative, and delivers high-quality work.",
+                position: "Product Owner", 
+                company: "StartupHub", 
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200", 
+                year: "2024", 
+                location: "Shanghai, China", 
+                project: "UI Design",
+                category: "ui"
+            },
+            { 
+                id: 15, 
+                name: "Robert Brown", 
+                rating: 4.5, 
+                text: "Great work overall. Momen delivered on time and was very responsive to feedback.",
+                position: "Product Owner", 
+                company: "StartupX", 
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200", 
+                year: "2023", 
+                location: "Berlin, Germany", 
+                project: "Web Design",
+                category: "ui"
+            },
+            { 
+                id: 16, 
+                name: "Omar Farouk", 
+                rating: 4.5, 
+                text: "Good experience overall. The designs were professional and met our requirements.",
+                position: "CEO", 
+                company: "TechCorp", 
+                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200", 
+                year: "2023", 
+                location: "Kuala Lumpur, Malaysia", 
+                project: "UI/UX",
+                category: "ui"
+            },
+            { 
+                id: 17, 
+                name: "Ahmed Hassan", 
+                rating: 4.5, 
+                text: "Very satisfied with the work. The mobile app design was intuitive and easy to navigate.",
+                position: "Product Manager", 
+                company: "AppWorks", 
+                image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200", 
+                year: "2023", 
+                location: "Amman, Jordan", 
+                project: "Mobile App",
+                category: "ui"
+            },
+            { 
+                id: 18, 
+                name: "Peter Chen", 
+                rating: 5.0, 
+                text: "Momen redesigned our dashboard. The analytics are now much easier to understand.",
+                position: "Data Analyst", 
+                company: "DataViz", 
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200", 
+                year: "2024", 
+                location: "Taipei, Taiwan", 
+                project: "Dashboard",
+                category: "ui"
+            },
+            { 
+                id: 19, 
+                name: "Daniel Kim", 
+                rating: 5.0, 
+                text: "Working with Momen was a game-changer for our startup. Investors loved the design.",
+                position: "Co-Founder", 
+                company: "InnovateLab", 
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200", 
+                year: "2024", 
+                location: "San Francisco, USA", 
+                project: "UI/UX",
+                category: "ui"
+            },
+            { 
+                id: 20, 
+                name: "Hassan Ali", 
+                rating: 5.0, 
+                text: "The UI/UX design for our fintech app was flawless. Users love the simplicity.",
+                position: "CTO", 
+                company: "PayTech", 
+                image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200", 
+                year: "2024", 
+                location: "Riyadh, KSA", 
+                project: "UI/UX",
+                category: "ui"
+            },
+            
+            // Branding
+            { 
+                id: 21, 
+                name: "David Wilson", 
+                rating: 5.0, 
+                text: "The website redesign exceeded all expectations. Increased conversion rates by 35%.",
+                position: "CEO", 
+                company: "TechSolutions", 
+                image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200", 
+                year: "2024", 
+                location: "Dubai, UAE", 
+                project: "Web Design",
+                category: "branding"
+            },
+            { 
+                id: 22, 
+                name: "Yara Khalil", 
+                rating: 5.0, 
+                text: "The website for our restaurant increased online reservations by 80%.",
+                position: "Owner", 
+                company: "Mediterraneo", 
+                image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200", 
+                year: "2023", 
+                location: "Beirut, Lebanon", 
+                project: "Web Design",
+                category: "branding"
+            },
+            { 
+                id: 23, 
+                name: "Carlos Mendez", 
+                rating: 5.0, 
+                text: "Momen designed our marketing materials for a product launch. Huge success!",
+                position: "Marketing Director", 
+                company: "Latino Brands", 
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200", 
+                year: "2024", 
+                location: "Mexico City, Mexico", 
+                project: "Marketing",
+                category: "branding"
+            },
+            { 
+                id: 24, 
+                name: "Aisha Rahman", 
+                rating: 5.0, 
+                text: "The mobile app has 4.8 stars on the app store. Students find it intuitive.",
+                position: "Education Director", 
+                company: "LearnFast", 
+                image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200", 
+                year: "2023", 
+                location: "Kuala Lumpur, Malaysia", 
+                project: "Mobile App",
+                category: "branding"
+            },
+            { 
+                id: 25, 
+                name: "George Nicola", 
+                rating: 5.0, 
+                text: "Momen redesigned our brand identity. Featured in design blogs!",
+                position: "CEO", 
+                company: "Nicola Group", 
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200", 
+                year: "2024", 
+                location: "Athens, Greece", 
+                project: "Brand Identity",
+                category: "branding"
+            },
+            { 
+                id: 26, 
+                name: "Samira Atif", 
+                rating: 5.0, 
+                text: "The packaging design won an award! His creativity is unmatched.",
+                position: "Product Manager", 
+                company: "Luxury Cosmetics", 
+                image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200", 
+                year: "2023", 
+                location: "Dubai, UAE", 
+                project: "Packaging",
+                category: "branding"
+            },
+            { 
+                id: 27, 
+                name: "Vikram Singh", 
+                rating: 5.0, 
+                text: "Our startup's website has been a huge hit with investors and customers.",
+                position: "Founder", 
+                company: "TechIndia", 
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200", 
+                year: "2024", 
+                location: "Mumbai, India", 
+                project: "Web Design",
+                category: "branding"
+            },
+            { 
+                id: 28, 
+                name: "Elena Popescu", 
+                rating: 5.0, 
+                text: "Social media campaign increased engagement by 200%. Wonderful experience!",
+                position: "Social Media Manager", 
+                company: "European Fashion", 
+                image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200", 
+                year: "2023", 
+                location: "Bucharest, Romania", 
+                project: "Social Media",
+                category: "branding"
+            },
+            { 
+                id: 29, 
+                name: "Anna Kowalski", 
+                rating: 5.0, 
+                text: "The brochure and catalog design is elegant. Highly recommended!",
+                position: "Marketing Manager", 
+                company: "Polish Goods", 
+                image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=200", 
+                year: "2023", 
+                location: "Warsaw, Poland", 
+                project: "Print Design",
+                category: "branding"
+            },
+            { 
+                id: 30, 
+                name: "Kevin Lee", 
+                rating: 4.0, 
+                text: "Good work, delivered on time. The design met our requirements.",
+                position: "Marketing Manager", 
+                company: "Asian Markets", 
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200", 
+                year: "2023", 
+                location: "Seoul, South Korea", 
+                project: "Social Media",
+                category: "branding"
+            },
+            { 
+                id: 31, 
+                name: "Thomas Weber", 
+                rating: 3.5, 
+                text: "Decent work, met deadlines. Room for improvement.",
+                position: "Project Lead", 
+                company: "GermanTech", 
+                image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200", 
+                year: "2022", 
+                location: "Berlin, Germany", 
+                project: "Web Design",
+                category: "branding"
+            },
+            { 
+                id: 32, 
+                name: "Nora Abdullah", 
+                rating: 5.0, 
+                text: "Exceptional talent! He's now our go-to designer.",
+                position: "Founder", 
+                company: "Creative Hub", 
+                image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200", 
+                year: "2024", 
+                location: "Doha, Qatar", 
+                project: "Branding",
+                category: "branding"
+            }
+        ];
+
+        let currentFilter = 'all';
+        let currentSort = 'recent';
+        let currentPage = 1;
+        const itemsPerPage = 9;
+
+        // عرض الشهادات
+        function displayTestimonials() {
+            const grid = document.getElementById('testimonialsGrid');
+            
+            // تطبيق الفلتر حسب نوع المشروع
+            let filtered = [...allTestimonials];
+            
+            if (currentFilter !== 'all') {
+                filtered = filtered.filter(t => t.category === currentFilter);
+            }
+            
+            // تطبيق الترتيب
+            if (currentSort === 'recent') {
+                filtered.sort((a, b) => b.year.localeCompare(a.year));
+            } else if (currentSort === 'highest') {
+                filtered.sort((a, b) => b.rating - a.rating);
+            } else if (currentSort === 'oldest') {
+                filtered.sort((a, b) => a.year.localeCompare(b.year));
+            }
+            
+            // Pagination
+            const totalItems = filtered.length;
+            const totalPages = Math.ceil(totalItems / itemsPerPage);
+            const start = (currentPage - 1) * itemsPerPage;
+            const paginatedItems = filtered.slice(start, start + itemsPerPage);
+            
+            // تحديث العداد
+            document.getElementById('visibleCount').textContent = paginatedItems.length;
+            document.getElementById('totalCount').textContent = totalItems;
+            
+            // إنشاء HTML
+            grid.innerHTML = paginatedItems.map(testimonial => `
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <!-- Front Face -->
+                        <div class="flip-card-front glass-effect">
+                            <div class="client-image-large">
+                                <img src="${testimonial.image}" alt="${testimonial.name}">
+                                <div class="image-glow"></div>
+                            </div>
+                            <h3 class="client-name">${testimonial.name}</h3>
+                            <div class="client-rating">
+                                <div class="stars">
+                                    ${generateStars(testimonial.rating)}
+                                </div>
+                                <span class="rating-badge">${testimonial.rating.toFixed(1)}</span>
+                            </div>
+                            <div class="client-title">${testimonial.position}</div>
+                            <div class="client-company">${testimonial.company}</div>
+                            <div class="flip-hint">
+                                <i class="fas fa-sync-alt"></i>
+                                <span>Click to read</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Back Face -->
+                        <div class="flip-card-back glass-effect">
+                            <div class="back-content">
+                                <i class="fas fa-quote-right quote-icon"></i>
+                                <p class="testimonial-text">"${testimonial.text}"</p>
+                                <div class="testimonial-meta">
+                                    <span class="year"><i class="far fa-calendar-alt"></i> ${testimonial.year}</span>
+                                    <span class="location"><i class="fas fa-map-marker-alt"></i> ${testimonial.location}</span>
+                                </div>
+                                <div class="project-badge">
+                                    <i class="fas ${testimonial.project === 'UX Design' || testimonial.project === 'UI/UX' ? 'fa-mobile-alt' : 
+                                                      testimonial.project === 'Brand Identity' || testimonial.project === 'Branding' ? 'fa-paint-brush' : 
+                                                      testimonial.project === 'Web Design' ? 'fa-laptop-code' : 
+                                                      testimonial.project === 'Social Media' ? 'fa-hashtag' : 
+                                                      testimonial.project === 'Packaging' ? 'fa-box' : 
+                                                      testimonial.project === 'Illustration' ? 'fa-pen-fancy' : 
+                                                      testimonial.project === 'Dashboard' ? 'fa-chart-pie' : 
+                                                      testimonial.project === 'Marketing' ? 'fa-bullhorn' : 
+                                                      testimonial.project === 'Print Design' ? 'fa-newspaper' : 
+                                                      testimonial.project === 'Mobile App' ? 'fa-mobile-alt' : 
+                                                      'fa-paint-brush'}"></i>
+                                    ${testimonial.project}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // تحديث pagination
+            updatePagination(totalPages);
+        }
+
+        // توليد النجوم
+        function generateStars(rating) {
+            let stars = '';
+            for (let i = 1; i <= 5; i++) {
+                if (i <= Math.floor(rating)) {
+                    stars += '<i class="fas fa-star"></i>';
+                } else if (i - 0.5 <= rating) {
+                    stars += '<i class="fas fa-star-half-alt"></i>';
+                } else {
+                    stars += '<i class="far fa-star"></i>';
+                }
+            }
+            return stars;
+        }
+
+        // تحديث أزرار pagination
+        function updatePagination(totalPages) {
+            const pagination = document.getElementById('pagination');
+            
+            let html = '';
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+            }
+            
+            pagination.innerHTML = html;
+        }
+
+        // تغيير الصفحة
+        window.goToPage = function(page) {
+            currentPage = page;
+            displayTestimonials();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // تفعيل فلتر حسب نوع المشروع
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                currentPage = 1;
+                displayTestimonials();
+            });
+        });
+
+        // تفعيل الترتيب
+        window.sortBy = function(value) {
+            currentSort = value;
+            currentPage = 1;
+            displayTestimonials();
+        };
+
+        // التحميل الأول
+        displayTestimonials();
+
+        // ===== تفعيل تأثير الزجاجي للنافبار =====
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.glass-nav');
+    
+    if (!navbar) return;
+    
+    function updateNavbar() {
+        if (window.scrollY > 50) {
+            navbar.classList.add('scrolled');
+            // إضافة التأثيرات مباشرة
+            navbar.style.background = 'var(--glass-bg)';
+            navbar.style.backdropFilter = 'blur(20px) saturate(180%)';
+            navbar.style.webkitBackdropFilter = 'blur(20px) saturate(180%)';
+            navbar.style.borderBottom = '1px solid var(--glass-border)';
+        } else {
+            navbar.classList.remove('scrolled');
+            navbar.style.background = 'transparent';
+            navbar.style.backdropFilter = 'none';
+            navbar.style.webkitBackdropFilter = 'none';
+            navbar.style.borderBottom = '1px solid transparent';
+        }
+    }
+    
+    window.addEventListener('scroll', updateNavbar);
+    updateNavbar(); // تفعيل فوراً
+});
+    </script>
+</body>
+</html>

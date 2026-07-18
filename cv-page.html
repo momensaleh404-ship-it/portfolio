@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Momen Saleh · Ultimate Full Details CV</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #0a0c0f;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(77, 166, 255, 0.03) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(0, 206, 237, 0.03) 0%, transparent 30%);
+            color: #e2e8f0;
+            line-height: 1.5;
+            padding: 40px 20px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .cv-container {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        /* ===== أزرار تحكم ===== */
+        .cv-controls {
+            display: flex;
+            gap: 12px;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .cv-control-btn {
+            padding: 14px 28px;
+            border-radius: 50px;
+            border: none;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            background: rgba(20, 25, 35, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(77, 166, 255, 0.2);
+            color: #e2e8f0;
+        }
+        
+        .cv-control-btn:hover {
+            border-color: #4da6ff;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -12px #4da6ff;
+        }
+        
+        .cv-control-btn.download {
+            background: linear-gradient(135deg, #4da6ff, #3a8de0);
+            color: white;
+        }
+        
+        /* ===== البطاقة الرئيسية ===== */
+        .cv-card {
+            background: #11161f;
+            border-radius: 50px;
+            box-shadow: 0 50px 100px -30px rgba(0, 0, 0, 0.8);
+            display: grid;
+            grid-template-columns: 1fr 2.2fr;
+            overflow: hidden;
+            border: 1px solid rgba(77, 166, 255, 0.15);
+        }
+        
+        /* ===== SIDEBAR ===== */
+        .cv-sidebar {
+            background: linear-gradient(165deg, #0b121c 0%, #141e2d 100%);
+            padding: 40px 30px;
+            border-right: 1px solid rgba(77, 166, 255, 0.15);
+        }
+        
+        /* Profile */
+        .profile-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 30px;
+            margin: 0 auto 20px;
+            padding: 4px;
+            background: linear-gradient(135deg, #4da6ff, #00ceed);
+            box-shadow: 0 20px 30px -10px rgba(77, 166, 255, 0.3);
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 27px;
+            object-fit: cover;
+            border: 2px solid #0b121c;
+        }
+        
+        .profile-section h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            background: linear-gradient(135deg, #fff, #e0e0e0);
+            background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .profile-title {
+            color: #4da6ff;
+            font-weight: 500;
+            padding: 8px 20px;
+            background: rgba(77, 166, 255, 0.08);
+            border-radius: 50px;
+            display: inline-block;
+            border: 1px solid rgba(77, 166, 255, 0.2);
+        }
+        
+        /* Info Cards */
+        .info-card {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 25px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .info-card-title {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8b9bb5;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-card-title i {
+            color: #4da6ff;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        
+        .info-item i {
+            width: 40px;
+            height: 40px;
+            background: rgba(77, 166, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4da6ff;
+        }
+        
+        .info-content {
+            flex: 1;
+        }
+        
+        .info-label {
+            font-size: 0.7rem;
+            color: #8b9bb5;
+            margin-bottom: 3px;
+        }
+        
+        .info-value {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        
+        /* Skills */
+        .skill-item {
+            margin-bottom: 18px;
+        }
+        
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+        }
+        
+        .skill-percent {
+            color: #4da6ff;
+            font-weight: 600;
+            background: rgba(77, 166, 255, 0.1);
+            padding: 2px 10px;
+            border-radius: 20px;
+        }
+        
+        .skill-bar-bg {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.06);
+            border-radius: 10px;
+        }
+        
+        .skill-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4da6ff, #00ceed);
+            border-radius: 10px;
+        }
+        
+        /* Languages */
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+        }
+        
+        .language-name {
+            font-weight: 600;
+        }
+        
+        .language-level {
+            color: #4da6ff;
+            background: rgba(77, 166, 255, 0.1);
+            padding: 4px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+        }
+        
+        /* Interests */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .interest-item {
+            background: rgba(77, 166, 255, 0.05);
+            border: 1px solid rgba(77, 166, 255, 0.1);
+            border-radius: 15px;
+            padding: 12px 8px;
+            text-align: center;
+        }
+        
+        .interest-item i {
+            color: #4da6ff;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .interest-item span {
+            display: block;
+            font-size: 0.75rem;
+            color: #cbd5e1;
+        }
+        
+        /* ===== MAIN CONTENT ===== */
+        .cv-main {
+            padding: 40px 35px;
+            background: #0f1622;
+        }
+        
+        /* Header */
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .availability {
+            background: rgba(77, 166, 255, 0.1);
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 1px solid rgba(77, 166, 255, 0.2);
+        }
+        
+        .availability .dot {
+            width: 8px;
+            height: 8px;
+            background: #4da6ff;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+            box-shadow: 0 0 10px #4da6ff;
+        }
+        
+        .location-info {
+            color: #8b9bb5;
+            display: flex;
+            gap: 20px;
+        }
+        
+        /* Section Headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 30px 0 20px;
+        }
+        
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(77, 166, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4da6ff;
+            font-size: 1.2rem;
+        }
+        
+        .section-header h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+        
+        .section-header span {
+            color: #8b9bb5;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+        
+        /* About */
+        .about-text {
+            color: #cbd5e1;
+            line-height: 1.8;
+            background: rgba(0,0,0,0.2);
+            padding: 25px;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.03);
+            margin-bottom: 20px;
+        }
+        
+        .highlight {
+            color: #4da6ff;
+            font-weight: 600;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin: 25px 0;
+        }
+        
+        .stat-card {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 20px 15px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #4da6ff;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #8b9bb5;
+        }
+        
+        /* Experience Grid */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .exp-card {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 25px;
+            padding: 22px;
+        }
+        
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .exp-title {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        
+        .exp-date {
+            color: #4da6ff;
+            font-size: 0.8rem;
+            background: rgba(77,166,255,0.1);
+            padding: 4px 12px;
+            border-radius: 30px;
+        }
+        
+        .exp-company {
+            color: #4da6ff;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+        
+        .exp-desc {
+            color: #a0b0c5;
+            font-size: 0.85rem;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+        
+        .exp-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .exp-tag {
+            background: rgba(77,166,255,0.05);
+            border: 1px solid rgba(77,166,255,0.1);
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            color: #8b9bb5;
+        }
+        
+        /* Education Grid */
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .edu-card {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 18px;
+        }
+        
+        .edu-degree {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .edu-school {
+            color: #4da6ff;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+        
+        .edu-year {
+            color: #8b9bb5;
+            font-size: 0.8rem;
+        }
+        
+        /* Certifications */
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        
+        .cert-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 18px;
+            padding: 15px;
+        }
+        
+        .cert-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(77,166,255,0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4da6ff;
+        }
+        
+        .cert-info h4 {
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+        }
+        
+        .cert-info p {
+            font-size: 0.75rem;
+            color: #8b9bb5;
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .project-card {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 18px;
+        }
+        
+        .project-name {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #4da6ff;
+        }
+        
+        .project-desc {
+            font-size: 0.8rem;
+            color: #a0b0c5;
+            margin-bottom: 10px;
+        }
+        
+        .project-tech {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+        
+        .project-tech span {
+            background: rgba(77,166,255,0.05);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+        }
+        
+        /* Awards Grid */
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .award-card {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 18px;
+            padding: 18px 15px;
+            text-align: center;
+        }
+        
+        .award-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        
+        .award-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .award-year {
+            color: #4da6ff;
+            font-size: 0.8rem;
+        }
+        
+        /* Tools Grid */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        
+        .tool-item {
+            background: rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 15px;
+            padding: 15px 10px;
+            text-align: center;
+        }
+        
+        .tool-item i {
+            font-size: 1.5rem;
+            color: #4da6ff;
+            margin-bottom: 8px;
+        }
+        
+        .tool-item span {
+            display: block;
+            font-size: 0.8rem;
+        }
+        
+        /* Footer */
+        .cv-footer {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #8b9bb5;
+        }
+        
+        .footer-stats {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .footer-stats i {
+            color: #4da6ff;
+            margin-right: 8px;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.03);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #4da6ff;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: #4da6ff;
+            color: white;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .cv-card {
+                grid-template-columns: 1fr;
+            }
+            .experience-grid {
+                grid-template-columns: 1fr;
+            }
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .awards-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .main-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            .cv-footer {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <!-- Controls -->
+        <div class="cv-controls">
+            <button class="cv-control-btn" onclick="window.history.back()">
+                <i class="fas fa-arrow-left"></i> Back
+            </button>
+            <button class="cv-control-btn" onclick="downloadAsImage()">
+                <i class="fas fa-camera"></i> PNG
+            </button>
+            <button class="cv-control-btn" onclick="window.print()">
+                <i class="fas fa-print"></i> Print
+            </button>
+            <button class="cv-control-btn download" onclick="downloadPDF()">
+                <i class="fas fa-file-pdf"></i> PDF
+            </button>
+            <button class="cv-control-btn" onclick="shareCV()">
+                <i class="fas fa-share-alt"></i> Share
+            </button>
+        </div>
+        
+        <!-- Main CV Card -->
+        <div class="cv-card" id="cvCard">
+            <!-- Sidebar -->
+            <div class="cv-sidebar">
+                <div class="profile-section">
+                    <div class="profile-image">
+                        <img src="4.jpg" alt="Momen Saleh">
+                    </div>
+                    <h1>Momen Saleh</h1>
+                    <div class="profile-title">
+                        <i class="fas fa-palette"></i> Creative Director
+                    </div>
+                </div>
+                
+                <!-- Contact Card -->
+                <div class="info-card">
+                    <div class="info-card-title">
+                        <i class="fas fa-id-card"></i> CONTACT
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div class="info-content">
+                            <div class="info-label">EMAIL</div>
+                            <div class="info-value">momensaleh404@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div class="info-content">
+                            <div class="info-label">PHONE</div>
+                            <div class="info-value">+972 59 250 7128</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div class="info-content">
+                            <div class="info-label">LOCATION</div>
+                            <div class="info-value">Gaza, Palestine</div>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-globe"></i>
+                        <div class="info-content">
+                            <div class="info-label">PORTFOLIO</div>
+                            <div class="info-value">momensaleh.design</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Skills Card -->
+                <div class="info-card">
+                    <div class="info-card-title">
+                        <i class="fas fa-code"></i> CORE SKILLS
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>UI/UX Design</span>
+                            <span class="skill-percent">95%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Graphic Design</span>
+                            <span class="skill-percent">90%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Brand Identity</span>
+                            <span class="skill-percent">88%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 88%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Web Design</span>
+                            <span class="skill-percent">85%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="skill-header">
+                            <span>Motion Design</span>
+                            <span class="skill-percent">75%</span>
+                        </div>
+                        <div class="skill-bar-bg">
+                            <div class="skill-bar-fill" style="width: 75%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Languages Card -->
+                <div class="info-card">
+                    <div class="info-card-title">
+                        <i class="fas fa-language"></i> LANGUAGES
+                    </div>
+                    
+                    <div class="language-item">
+                        <span class="language-name">Arabic</span>
+                        <span class="language-level">Native</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">English</span>
+                        <span class="language-level">Professional</span>
+                    </div>
+                </div>
+                
+                <!-- Interests Card -->
+                <div class="info-card">
+                    <div class="info-card-title">
+                        <i class="fas fa-heart"></i> INTERESTS
+                    </div>
+                    
+                    <div class="interests-grid">
+                        <div class="interest-item">
+                            <i class="fas fa-camera"></i>
+                            <span>Photography</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-plane"></i>
+                            <span>Travel</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-book"></i>
+                            <span>Reading</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-music"></i>
+                            <span>Music</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-gamepad"></i>
+                            <span>Gaming</span>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-utensils"></i>
+                            <span>Cooking</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="cv-main">
+                <!-- Header -->
+                <div class="main-header">
+                    <div class="availability">
+                        <span class="dot"></span>
+                        <span>Available for opportunities</span>
+                    </div>
+                    <div class="location-info">
+                        <span><i class="fas fa-calendar"></i> Updated Feb 2026</span>
+                        <span><i class="fas fa-briefcase"></i> 5+ Years</span>
+                        <span><i class="fas fa-project-diagram"></i> 50+ Projects</span>
+                    </div>
+                </div>
+                
+                <!-- About -->
+                <div class="about-text">
+                    <span class="highlight">Creative Designer</span> with 5+ years of experience transforming ideas into inspiring digital experiences. Specialized in creating <span class="highlight">user-centered designs</span> that drive engagement. Proven track record of increasing client satisfaction by <span class="highlight">95%</span>.
+                </div>
+                
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects Done</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">8</div>
+                        <div class="stat-label">Awards Won</div>
+                    </div>
+                </div>
+                
+                <!-- Experience Section -->
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-briefcase"></i></div>
+                    <h2>Work Experience <span>(4 positions)</span></h2>
+                </div>
+                
+                <div class="experience-grid">
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <span class="exp-title">Graphic & Social Media Manager</span>
+                            <span class="exp-date">2022–2024</span>
+                        </div>
+                        <div class="exp-company">Al Ghoul Institute · UAE</div>
+                        <div class="exp-desc">Responsible for social media designs, print materials, and managing all institute social media accounts.</div>
+                        <div class="exp-tags">
+                            <span class="exp-tag">Graphic Design</span>
+                            <span class="exp-tag">Social Media Management</span>
+                            <span class="exp-tag">Print Design</span>
+                        </div>
+                    </div>
+                    
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <span class="exp-title">Graphic & Social Media Manager</span>
+                            <span class="exp-date">2024–2025</span>
+                        </div>
+                        <div class="exp-company">Al Waha Institute · Sultanate of Oman</div>
+                        <div class="exp-desc">Responsible for graphic design and managing the institute’s social media accounts.</div>
+                        <div class="exp-tags">
+                            <span class="exp-tag">Social Media</span>
+                            <span class="exp-tag">Design</span>
+                            <span class="exp-tag">Content</span>
+                        </div>
+                    </div>
+                    
+                    <div class="exp-card">
+                        <div class="exp-header">
+                            <span class="exp-title">Volunteer Data Entry Clerk</span>
+                            <span class="exp-date">2024–2026</span>
+                        </div>
+                        <div class="exp-company">UNICEF · Gaza</div>
+                        <div class="exp-desc">Entered, organized, and reviewed data while ensuring accuracy.</div>
+                        <div class="exp-tags">
+                            <span class="exp-tag">Data Entry</span>
+                            <span class="exp-tag">Microsoft Office</span>
+                        </div>
+                    </div>
+                    
+                   
+                </div>
+                
+                <!-- Education & Certifications -->
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h2>Education & Certifications</h2>
+                </div>
+                
+                <div class="education-grid">
+                    <div class="edu-card">
+                        <div class="edu-degree">Bachelor’s Degree in Multimedia</div>
+                        <div class="edu-school">University College of Science and Technology</div>
+                        <div class="edu-year">2020 – 2025 | Very Good</div>
+                    </div>
+                    <div class="edu-card">
+                        <div class="edu-degree">Diploma in Business Administration</div>
+                        <div class="edu-school">Al-Aqsa University</div>
+                        <div class="edu-year">Currently Studying | First Year Completed with Very Good Grade</div>
+                    </div>
+                </div>
+                
+                <div class="certs-grid">
+                    <div class="cert-item">
+                        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                        <div class="cert-info">
+                            <h4>Graphic Design Certificate</h4>
+                            <p>2021 · Glow Training · 72 Hours</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                        <div class="cert-info">
+                            <h4>Front-End Web Design Certificate</h4>
+                            <p>2022 · 72 Training Hours</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                        <div class="cert-info">
+                            <h4>UX/UI Design Certificate</h4>
+                            <p>2023 · 120 Training Hours</p>
+                        </div>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                        <div class="cert-info">
+                            <h4>Photoshop Certificate</h4>
+                            <p>2025 · Msaqat</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <!-- Awards -->
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-trophy"></i></div>
+                    <h2>Awards & Recognition</h2>
+                </div>
+                
+                <div class="awards-grid">
+                    <div class="award-card">
+                        <div class="award-icon">🏆</div>
+                        <div class="award-name">Best UI Design</div>
+                        <div class="award-year">2024</div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">🌟</div>
+                        <div class="award-name">Design Excellence</div>
+                        <div class="award-year">2023</div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">⚡</div>
+                        <div class="award-name">Innovation Award</div>
+                        <div class="award-year">2023</div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">🎯</div>
+                        <div class="award-name">Top Designer</div>
+                        <div class="award-year">2022</div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">💡</div>
+                        <div class="award-name">Creative Genius</div>
+                        <div class="award-year">2021</div>
+                    </div>
+                    <div class="award-card">
+                        <div class="award-icon">✨</div>
+                        <div class="award-name">Rising Star</div>
+                        <div class="award-year">2020</div>
+                    </div>
+                </div>
+                
+                <!-- Tools -->
+                <div class="section-header">
+                    <div class="section-icon"><i class="fas fa-tools"></i></div>
+                    <h2>Tools & Technologies</h2>
+                </div>
+                
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <i class="fab fa-figma"></i>
+                        <span>Figma</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-paint-brush"></i>
+                        <span>Photoshop</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-pen-fancy"></i>
+                        <span>Illustrator</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-film"></i>
+                        <span>After Effects</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-code"></i>
+                        <span>HTML/CSS</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-cube"></i>
+                        <span>Blender</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-pencil-ruler"></i>
+                        <span>Adobe XD</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Prototyping</span>
+                    </div>
+                </div>
+                
+                <!-- Footer -->
+                <div class="cv-footer">
+                    <div class="footer-stats">
+                        <span><i class="far fa-calendar-alt"></i> Feb 2026</span>
+                        <span><i class="fas fa-shield-alt"></i> Available</span>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-behance"></i></a>
+                        <a href="#"><i class="fab fa-dribbble"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function downloadAsImage() {
+            const script = document.createElement('script');
+            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js';
+            script.onload = function() {
+                const cvCard = document.getElementById('cvCard');
+                html2canvas(cvCard, { scale: 2, backgroundColor: '#11161f' }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'Momen_Saleh_Full_CV.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
+            };
+            document.head.appendChild(script);
+        }
+        
+        function downloadPDF() { window.print(); }
+        
+        function shareCV() {
+            if (navigator.share) {
+                navigator.share({ title: 'Momen Saleh - Full CV', url: window.location.href });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Link copied!');
+            }
+        }
+
+        
+    </script>
+
+    
+</body>
+</html>

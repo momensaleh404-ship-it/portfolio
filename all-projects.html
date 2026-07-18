@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects | Momen Saleh - Complete Portfolio</title>
+    <link rel="stylesheet" href="momen.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* تنسيقات خاصة بصفحة جميع المشاريع */
+        .archive-header {
+            padding: 120px 0 40px;
+            text-align: center;
+            background: linear-gradient(to bottom, transparent, rgba(77, 166, 255, 0.05));
+        }
+        
+        .archive-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin: 40px 0 50px;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        
+        .works-grid {
+            grid-template-columns: repeat(4, 1fr) !important;
+            gap: 20px;
+        }
+        
+        .filter-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+            padding: 15px 25px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 60px;
+            border: 1px solid var(--glass-border);
+        }
+        
+        .results-count {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+        
+        .results-count span {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .view-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .view-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 50px 0 30px;
+            flex-wrap: wrap;
+        }
+        
+        .page-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            color: var(--text-color);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+        }
+        
+        .page-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .page-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary-color);
+        }
+        
+        @media (max-width: 1200px) {
+            .works-grid { grid-template-columns: repeat(3, 1fr) !important; }
+        }
+        
+        @media (max-width: 992px) {
+            .works-grid { grid-template-columns: repeat(2, 1fr) !important; }
+        }
+        
+        @media (max-width: 768px) {
+            .filter-wrapper { flex-direction: column; gap: 15px; }
+            .archive-stats { gap: 30px; }
+            .stat-number { font-size: 2rem; }
+        }
+        
+        @media (max-width: 576px) {
+            .works-grid { grid-template-columns: 1fr !important; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <button class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="logo">
+                <span class="logo-text">Momen</span>
+                <span class="logo-dot"></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#home" class="nav-link">Home</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#works" class="nav-link">Works</a></li>
+                <li><a href="index.html#testimonials" class="nav-link">Testimonials</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                
+                <button class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </div>
+        
+    </nav>
+        <!-- Breadcrumbs -->
+    <div class="breadcrumbs">
+        <div class="breadcrumbs-container">
+            <ul class="breadcrumb-list" id="projectBreadcrumbs">
+                <li class="breadcrumb-item">
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li class="breadcrumb-separator">
+                    <i class="fas fa-chevron-right"></i>
+                </li>
+                <li class="breadcrumb-item">
+    <a href="index.html#works" id="projectsBreadcrumbLink">
+        <i class="fas fa-th-large"></i>
+        <span>Projects</span>
+    </a>
+</li>
+                <li class="breadcrumb-separator">
+                    <i class="fas fa-chevron-right"></i>
+                </li>
+                <li class="breadcrumb-item active" id="currentProjectName">
+                    <span>Loading...</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="archive-header">
+        <div class="container">
+            <div class="hero-badge glass-effect" style="margin-top: 0;">
+                <span>📁 Complete Portfolio</span>
+            </div>
+            <h1 class="hero-title">
+                <span class="title-line">All Design</span>
+                <span class="title-line"><span class="title-gradient">Projects</span></span>
+            </h1>
+            <p class="hero-description" style="max-width: 600px; margin: 20px auto;">
+                Browse through my complete collection of 50+ design projects
+            </p>
+            
+            <!-- إحصائيات سريعة -->
+            <div class="archive-stats">
+                <div class="stat-item">
+                    <div class="stat-number">52</div>
+                    <div class="stat-label">Total Projects</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24</div>
+                    <div class="stat-label">Graphic Design</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">18</div>
+                    <div class="stat-label">UI/UX Design</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10</div>
+                    <div class="stat-label">Branding</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Section -->
+    <section class="works-section" style="padding-top: 0;">
+        <div class="container">
+            <!-- Filter Bar متطور -->
+            <div class="filter-wrapper">
+                <div class="results-count">
+                    Showing <span id="visibleCount">0</span> of <span id="totalCount">52</span> projects
+                </div>
+                
+                <div class="works-filter" style="margin: 0;">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="graphic">Graphic</button>
+                    <button class="filter-btn" data-filter="ui">UI/UX</button>
+                    <button class="filter-btn" data-filter="branding">Branding</button>
+                </div>
+                
+                <div class="view-toggle">
+                    <button class="view-btn active" onclick="setGridView('grid')"><i class="fas fa-th"></i></button>
+                    <button class="view-btn" onclick="setGridView('list')"><i class="fas fa-list"></i></button>
+                </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="works-grid" id="projectsGrid"></div>
+            
+            <!-- Pagination -->
+            <div class="pagination" id="pagination"></div>
+            
+            <!-- Back to Home -->
+            <div style="text-align: center; margin: 40px 0;">
+                <a href="index.html" class="btn btn-secondary glass-effect" style="padding: 15px 40px;">
+                    <i class="fas fa-arrow-left" style="margin-right: 10px;"></i>
+                    <span>Back to Home</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logoo">
+                        <span class="logoo-text">Momen</span>
+                        <span class="logoo-dot"></span>
+                    </div>
+                    <p>Creating beautiful digital experiences that make a difference.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-behance"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-dribbble"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html#home">Home</a></li>
+                            <li><a href="index.html#works">Works</a></li>
+                            <li><a href="index.html#testimonials">Testimonials</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="#">UI/UX Design</a></li>
+                            <li><a href="#">Graphic Design</a></li>
+                            <li><a href="#">Brand Identity</a></li>
+                            <li><a href="#">Web Design</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Momen Saleh All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="momen.js"></script>
+
+    <script>
+        // ===== بيانات 50+ مشروع =====
+       const allProjects = [
+    // ===== المشروع 1 - Coffee Shop =====
+    { 
+        id: 1, 
+        title: "Coffee Shop Social Media Campaign", 
+        category: "graphic", 
+        categoryName: "Graphic Design", 
+        image: "caffe/222.png", 
+        year: "2024", 
+        client: "Cafe Arabica" 
+    },
+    
+    // ===== المشروع 2 - GYMIX =====
+    { 
+        id: 2, 
+        title: "GYMIX Fitness App UI/UX", 
+        category: "ui", 
+        categoryName: "UI/UX Design", 
+        image: "projet04/011.png", 
+        year: "2024", 
+        client: "GYMIX" 
+    },
+    
+    // ===== المشروع 3 - ZENTO =====
+    { 
+        id: 3, 
+        title: "ZENTO Delivery Brand Identity", 
+        category: "branding", 
+        categoryName: "Branding", 
+        image: "projet06/011.png", 
+        year: "2023", 
+        client: "ZENTO" 
+    },
+    
+    // ===== المشروع 4 - Home Financing =====
+    { 
+        id: 4, 
+        title: "Home Financing Social Media Campaign", 
+        category: "graphic", 
+        categoryName: "Graphic Design", 
+        image: "projet02/122.png", 
+        year: "2023", 
+        client: "Financing Co" 
+    },
+    
+    // ===== المشروع 5 - VOLTX =====
+    { 
+        id: 5, 
+        title: "VOLTX Electronics E-commerce Website", 
+        category: "ui", 
+        categoryName: "UI/UX Design", 
+        image: "projet05/0011.png", 
+        year: "2024", 
+        client: "VOLTX" 
+    },
+    
+    // ===== المشروع 6 - NAKHL =====
+    { 
+        id: 6, 
+        title: "NAKHL Perfume Brand Identity", 
+        category: "branding", 
+        categoryName: "Branding", 
+        image: "projet03/221.png", 
+        year: "2024", 
+        client: "NAKHL" 
+    },
+    
+    // ===== المشروع 7 - باقي المشاريع =====
+    { 
+        id: 7, 
+        title: "Business Cards Design", 
+        category: "graphic", 
+        categoryName: "Graphic Design", 
+        image: "https://images.unsplash.com/photo-1581276879432-15e50529f34b?w=800", 
+        year: "2024", 
+        client: "Corporate" 
+    },
+    { 
+        id: 8, 
+        title: "Brochure Design", 
+        category: "graphic", 
+        categoryName: "Graphic Design", 
+        image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800", 
+        year: "2023", 
+        client: "Travel Agency" 
+    },
+    { 
+        id: 9, 
+        title: "Infographic Design", 
+        category: "graphic", 
+        categoryName: "Graphic Design", 
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800", 
+        year: "2024", 
+        client: "Data Corp" 
+    },
+    { 
+        id: 10, 
+        title: "Typography Poster", 
+        category: "graphic", 
+        categoryName: "Graphic Design", 
+        image: "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=800", 
+        year: "2023", 
+        client: "Type Foundry" 
+    },
+    { 
+        id: 11, 
+        title: "Album Cover Design", 
+        category: "graphic", 
+        categoryName: "Graphic Design", 
+        image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800", 
+        year: "2024", 
+        client: "Music Label" 
+    },
+    { 
+        id: 12, 
+        title: "Book Cover Design", 
+        category: "graphic", 
+        categoryName: "Graphic Design", 
+        image: "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=800", 
+        year: "2023", 
+        client: "Publisher" 
+    },
+            { id: 13, title: "Social Media Kit", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?w=800", year: "2024", client: "Influencer" },
+            { id: 14, title: "Email Newsletter", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1557200134-90327ee9fafa?w=800", year: "2024", client: "Marketing Agency" },
+            { id: 15, title: "Event Banner", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1531053326607-9d349096d887?w=800", year: "2023", client: "Conference" },
+            { id: 16, title: "Menu Design", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800", year: "2024", client: "Restaurant" },
+            { id: 17, title: "Packaging Box", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800", year: "2023", client: "Cosmetics" },
+            { id: 18, title: "Brand Guidelines", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800", year: "2024", client: "Global Corp" },
+            { id: 19, title: "Illustration Series", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800", year: "2023", client: "Children's Book" },
+            { id: 20, title: "Merchandise Design", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1581276879432-15e50529f34b?w=800", year: "2024", client: "Band Merch" },
+            { id: 21, title: "Flyer Design", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800", year: "2023", client: "Night Club" },
+            { id: 22, title: "Billboard Design", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800", year: "2024", client: "Outdoor Ads" },
+            { id: 23, title: "Packaging Set", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800", year: "2023", client: "Food Brand" },
+            { id: 24, title: "Brand Collateral", category: "graphic", categoryName: "Graphic Design", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800", year: "2024", client: "Corporate" },
+            
+            // UI/UX Design (18 مشروع)
+            { id: 25, title: "E-commerce App", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=800", year: "2024", client: "ShopEasy" },
+            { id: 26, title: "Fitness App", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=800", year: "2024", client: "FitLife" },
+            { id: 27, title: "Banking App", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800", year: "2023", client: "FinTech" },
+            { id: 28, title: "Dashboard Design", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800", year: "2024", client: "SaaS Company" },
+            { id: 29, title: "Food Delivery App", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800", year: "2023", client: "Foodie" },
+            { id: 30, title: "Travel Website", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=800", year: "2024", client: "TravelGo" },
+            { id: 31, title: "Healthcare Portal", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800", year: "2023", client: "MediCare" },
+            { id: 32, title: "Real Estate App", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800", year: "2024", client: "PropertyHub" },
+            { id: 33, title: "Education Platform", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800", year: "2023", client: "EduTech" },
+            { id: 34, title: "Social Media App", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=800", year: "2024", client: "SocialCo" },
+            { id: 35, title: "Music Streaming App", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800", year: "2023", client: "MusicApp" },
+            { id: 36, title: "News Portal", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=800", year: "2024", client: "NewsCo" },
+            { id: 37, title: "CRM Dashboard", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800", year: "2023", client: "SalesTech" },
+            { id: 38, title: "Hotel Booking App", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800", year: "2024", client: "StayEasy" },
+            { id: 39, title: "Weather App", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800", year: "2023", client: "WeatherCo" },
+            { id: 40, title: "Calendar App", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1506784365847-bbad939e9335?w=800", year: "2024", client: "TimeMaster" },
+            { id: 41, title: "Notes App", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1512314889357-e157c22f938d?w=800", year: "2023", client: "NoteIt" },
+            { id: 42, title: "Video Streaming UI", category: "ui", categoryName: "UI/UX Design", image: "https://images.unsplash.com/photo-1578020190125-f4f7c18bc9cb?w=800", year: "2024", client: "StreamMax" },
+            
+            // Branding (10 مشاريع)
+            { id: 43, title: "Luxury Brand Identity", category: "branding", categoryName: "Branding", image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800", year: "2024", client: "PureLux" },
+            { id: 44, title: "Coffee Shop Branding", category: "branding", categoryName: "Branding", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800", year: "2023", client: "Brew House" },
+            { id: 45, title: "Tech Startup Brand", category: "branding", categoryName: "Branding", image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800", year: "2024", client: "InnovateTech" },
+            { id: 46, title: "Fashion Brand", category: "branding", categoryName: "Branding", image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800", year: "2023", client: "StyleCo" },
+            { id: 47, title: "Restaurant Rebrand", category: "branding", categoryName: "Branding", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800", year: "2024", client: "Gourmet" },
+            { id: 48, title: "Beauty Brand", category: "branding", categoryName: "Branding", image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800", year: "2023", client: "Glow Cosmetics" },
+            { id: 49, title: "Sport Brand", category: "branding", categoryName: "Branding", image: "https://images.unsplash.com/photo-1556905055-8f358a7a47b2?w=800", year: "2024", client: "AthletePro" },
+            { id: 50, title: "Kids Brand", category: "branding", categoryName: "Branding", image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800", year: "2023", client: "LittleStars" },
+            { id: 51, title: "Eco Brand", category: "branding", categoryName: "Branding", image: "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800", year: "2024", client: "GreenLife" },
+            { id: 52, title: "Tech Brand", category: "branding", categoryName: "Branding", image: "https://images.unsplash.com/photo-1558655146-9f40138edfeb?w=800", year: "2023", client: "NextGen" }
+        ];
+
+        let currentFilter = 'all';
+        let currentPage = 1;
+        let currentView = 'grid';
+        const projectsPerPage = 12;
+
+        // عرض المشاريع
+        function displayProjects() {
+            const grid = document.getElementById('projectsGrid');
+            
+            // تصفية المشاريع
+            const filtered = currentFilter === 'all' 
+                ? allProjects 
+                : allProjects.filter(p => p.category === currentFilter);
+            
+            // Pagination
+            const start = (currentPage - 1) * projectsPerPage;
+            const end = start + projectsPerPage;
+            const paginatedProjects = filtered.slice(start, end);
+            
+            // تحديث العداد
+            document.getElementById('visibleCount').textContent = paginatedProjects.length;
+            document.getElementById('totalCount').textContent = filtered.length;
+            
+            // إنشاء HTML
+            grid.innerHTML = paginatedProjects.map(project => `
+                <div class="project-card ${project.category}" data-category="${project.category}" onclick="window.location.href='project-details.html?id=${project.id}'">
+                    <div class="project-image">
+                        <img src="${project.image}" alt="${project.title}" loading="lazy">
+                        <div class="project-overlay">
+                            <button class="view-btn" onclick="event.stopPropagation(); window.location.href='project-details.html?id=${project.id}'">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">${project.title}</h3>
+                        <div class="project-meta">
+                            <span class="project-year">${project.year}</span>
+                            <span class="project-location">${project.client}</span>
+                        </div>
+                        <span class="project-category">${project.categoryName}</span>
+                    </div>
+                </div>
+            `).join('');
+            
+            // تحديث pagination
+            updatePagination(filtered.length);
+        }
+
+        // تحديث أزرار pagination
+        function updatePagination(totalItems) {
+            const totalPages = Math.ceil(totalItems / projectsPerPage);
+            const pagination = document.getElementById('pagination');
+            
+            let html = '';
+            for (let i = 1; i <= totalPages; i++) {
+                html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">${i}</button>`;
+            }
+            
+            pagination.innerHTML = html;
+        }
+
+        // تغيير الصفحة
+        window.goToPage = function(page) {
+            currentPage = page;
+            displayProjects();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        };
+
+        // تفعيل الفلتر
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentFilter = this.dataset.filter;
+                currentPage = 1;
+                displayProjects();
+            });
+        });
+
+        // تغيير عرض الشبكة
+        window.setGridView = function(type) {
+            const grid = document.getElementById('projectsGrid');
+            const viewBtns = document.querySelectorAll('.view-btn');
+            
+            viewBtns.forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.view-btn').classList.add('active');
+            
+            if (type === 'list') {
+                grid.style.gridTemplateColumns = '1fr';
+            } else {
+                // الرجوع للتنسيق الطبيعي حسب الشاشة
+                grid.style.gridTemplateColumns = '';
+            }
+        };
+
+        // التحميل الأول
+        displayProjects();
+    </script>
+
+    <script>
+    // ===== بيانات جميع المشاريع (52 مشروع) =====
+    const projectsData = {
+        1: { title: "Social Media Campaign", category: "graphic" },
+        2: { title: "E-commerce App", category: "ui" },
+        3: { title: "Packaging Design", category: "branding" },
+        4: { title: "Logo Design", category: "graphic" },
+        5: { title: "Mobile App", category: "ui" },
+        6: { title: "Brand System", category: "branding" },
+        7: { title: "Business Cards", category: "graphic" },
+        8: { title: "Brochure Design", category: "graphic" },
+        9: { title: "Infographic", category: "graphic" },
+        10: { title: "Typography Poster", category: "graphic" },
+        11: { title: "Album Cover", category: "graphic" },
+        12: { title: "Book Cover", category: "graphic" },
+        13: { title: "Social Media Kit", category: "graphic" },
+        14: { title: "Email Newsletter", category: "graphic" },
+        15: { title: "Event Banner", category: "graphic" },
+        16: { title: "Menu Design", category: "graphic" },
+        17: { title: "Packaging Box", category: "graphic" },
+        18: { title: "Brand Guidelines", category: "graphic" },
+        19: { title: "Illustration Series", category: "graphic" },
+        20: { title: "Merchandise Design", category: "graphic" },
+        21: { title: "Flyer Design", category: "graphic" },
+        22: { title: "Billboard Design", category: "graphic" },
+        23: { title: "Packaging Set", category: "graphic" },
+        24: { title: "Brand Collateral", category: "graphic" },
+        25: { title: "Fitness App", category: "ui" },
+        26: { title: "Banking App", category: "ui" },
+        27: { title: "Dashboard Design", category: "ui" },
+        28: { title: "Food Delivery App", category: "ui" },
+        29: { title: "Travel Website", category: "ui" },
+        30: { title: "Healthcare Portal", category: "ui" },
+        31: { title: "Real Estate App", category: "ui" },
+        32: { title: "Education Platform", category: "ui" },
+        33: { title: "Social Media App", category: "ui" },
+        34: { title: "Music Streaming App", category: "ui" },
+        35: { title: "News Portal", category: "ui" },
+        36: { title: "CRM Dashboard", category: "ui" },
+        37: { title: "Hotel Booking App", category: "ui" },
+        38: { title: "Weather App", category: "ui" },
+        39: { title: "Calendar App", category: "ui" },
+        40: { title: "Notes App", category: "ui" },
+        41: { title: "Video Streaming UI", category: "ui" },
+        42: { title: "Music Player", category: "ui" },
+        43: { title: "Luxury Brand Identity", category: "branding" },
+        44: { title: "Coffee Shop Branding", category: "branding" },
+        45: { title: "Tech Startup Brand", category: "branding" },
+        46: { title: "Fashion Brand", category: "branding" },
+        47: { title: "Restaurant Rebrand", category: "branding" },
+        48: { title: "Beauty Brand", category: "branding" },
+        49: { title: "Sport Brand", category: "branding" },
+        50: { title: "Kids Brand", category: "branding" },
+        51: { title: "Eco Brand", category: "branding" },
+        52: { title: "Tech Brand", category: "branding" }
+    };
+
+    // دالة لجلب اسم المشروع من الرابط
+    function getProjectNameFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const projectId = urlParams.get('id');
+        
+        if (projectId && projectsData[projectId]) {
+            return projectsData[projectId].title;
+        } else {
+            // إذا ما لقى ID، يحاول يجيب الاسم من الصفحة
+            const titleElement = document.querySelector('.design-title');
+            return titleElement ? titleElement.textContent : "Project Details";
+        }
+    }
+
+    // تحديث اسم المشروع في الـ Breadcrumb
+    document.addEventListener('DOMContentLoaded', function() {
+        const projectName = getProjectNameFromUrl();
+        const breadcrumbElement = document.getElementById('currentProjectName');
+        
+        if (breadcrumbElement) {
+            breadcrumbElement.innerHTML = `<span>${projectName}</span>`;
+        }
+        
+        // تحديث عنوان الصفحة
+        document.title = `${projectName} | Momen Saleh`;
+        
+        console.log('✅ Breadcrumb updated:', projectName);
+
+        
+    });
+
+    
+    
+</script>
+</body>
+</html>
