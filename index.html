@@ -390,130 +390,159 @@
             <button class="filter-btn" data-filter="ui">UI/UX</button>
             <button class="filter-btn" data-filter="branding">Branding</button>
         </div>
-            <!-- Clean Grid (6 مشاريع) -->
-            <div class="works-grid">
-                <!-- Graphic Design Project 1 -->
-                <div class="project-card graphic" data-category="graphic" data-id="1">
-                    <div class="project-image">
-                        <img src="caffe/222.png" alt="Social Media">
-                        <div class="project-overlay">
-                            <button class="view-btn" onclick="event.stopPropagation(); openProject(1)">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Coffee Shop Social Media Campaign</h3>
-                        <div class="project-meta">
-                            <span class="project-year">2024</span>
-                            <span class="project-location">🇵🇸 Palestine</span>
-                        </div>
-                        <span class="project-category">Graphic Design</span>
+            <!-- Clean Grid (6 مشاريع) --><!-- ===== FEATURED WORKS SECTION ===== -->
+<section id="works" class="works-section">
+    <div class="container">
+        <!-- Header مع زر See More -->
+        <div class="section-header" style="text-align: center;">
+            <h2 class="elite-title">
+                <span class="title-light">Featured </span>
+                <span class="title-gradient">Works</span>
+            </h2>
+            <p class="section-subtitle">Selected projects showcasing my design expertise</p>
+            
+            <!-- زر See More للمشاريع -->
+            <div style="margin-top: 20px;">
+                <a href="all-projects.html" class="btn btn-secondary glass-effect" style="padding: 12px 30px;">
+                    <span>See All Projects</span>
+                    <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+                    <span style="background: var(--primary-color); color: white; padding: 2px 10px; border-radius: 20px; margin-left: 10px; font-size: 0.8rem;">50+</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Minimal Filter -->
+        <div class="works-filter">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="graphic">Graphic</button>
+            <button class="filter-btn" data-filter="ui">UI/UX</button>
+            <button class="filter-btn" data-filter="branding">Branding</button>
+        </div>
+        
+        <!-- Clean Grid (6 مشاريع) -->
+        <div class="works-grid">
+            <!-- Project 1 - Coffee Shop -->
+            <div class="project-card graphic" data-category="graphic" onclick="window.location.href='project-details.html?id=1'">
+                <div class="project-image">
+                    <img src="caffe/222.png" alt="Coffee Shop">
+                    <div class="project-overlay">
+                        <button class="view-btn" onclick="event.stopPropagation(); window.location.href='project-details.html?id=1'">
+                            <i class="fas fa-eye"></i>
+                        </button>
                     </div>
                 </div>
-
-                <!-- UI/UX Project 2 -->
-                <div class="project-card ui" data-category="ui" data-id="2">
-                    <div class="project-image">
-                        <img src="projet04/011.png" alt="E-commerce App">
-                        <div class="project-overlay">
-                            <button class="view-btn" onclick="event.stopPropagation(); openProject(2)">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
+                <div class="project-info">
+                    <h3 class="project-title">Coffee Shop Social Media Campaign</h3>
+                    <div class="project-meta">
+                        <span class="project-year">2024</span>
+                        <span class="project-location">🇵🇸 Palestine</span>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">GYMIX Fitness App UI/UX</h3>
-                        <div class="project-meta">
-                            <span class="project-year">2024</span>
-                            <span class="project-location">🇵🇸 Palestine</span>
-                        </div>
-                        <span class="project-category">UI/UX Design</span>
+                    <span class="project-category">Graphic Design</span>
+                </div>
+            </div>
+
+            <!-- Project 2 - GYMIX -->
+            <div class="project-card ui" data-category="ui" onclick="window.location.href='project-details.html?id=2'">
+                <div class="project-image">
+                    <img src="projet04/011.png" alt="GYMIX">
+                    <div class="project-overlay">
+                        <button class="view-btn" onclick="event.stopPropagation(); window.location.href='project-details.html?id=2'">
+                            <i class="fas fa-eye"></i>
+                        </button>
                     </div>
                 </div>
-
-                <!-- Branding Project 3 -->
-                <div class="project-card branding" data-category="branding" data-id="3">
-                    <div class="project-image">
-                        <img src="projet06/011.png" alt="Packaging Design">
-                        <div class="project-overlay">
-                            <button class="view-btn" onclick="event.stopPropagation(); openProject(3)">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
+                <div class="project-info">
+                    <h3 class="project-title">GYMIX Fitness App UI/UX</h3>
+                    <div class="project-meta">
+                        <span class="project-year">2024</span>
+                        <span class="project-location">🇵🇸 Palestine</span>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">ZENTO Delivery Brand Identity</h3>
-                        <div class="project-meta">
-                            <span class="project-year">2023</span>
-                            <span class="project-location">🇵🇸 Palestine</span>
-                        </div>
-                        <span class="project-category">Branding</span>
+                    <span class="project-category">UI/UX Design</span>
+                </div>
+            </div>
+
+            <!-- Project 3 - ZENTO -->
+            <div class="project-card branding" data-category="branding" onclick="window.location.href='project-details.html?id=3'">
+                <div class="project-image">
+                    <img src="projet06/011.png" alt="ZENTO">
+                    <div class="project-overlay">
+                        <button class="view-btn" onclick="event.stopPropagation(); window.location.href='project-details.html?id=3'">
+                            <i class="fas fa-eye"></i>
+                        </button>
                     </div>
                 </div>
-
-                <!-- Graphic Design Project 4 - Logo -->
-                <div class="project-card graphic" data-category="graphic" data-id="4">
-                    <div class="project-image">
-                        <img src="projet02/122.png" alt="Logo Design">
-                        <div class="project-overlay">
-                            <button class="view-btn" onclick="event.stopPropagation(); openProject(4)">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
+                <div class="project-info">
+                    <h3 class="project-title">ZENTO Delivery Brand Identity</h3>
+                    <div class="project-meta">
+                        <span class="project-year">2023</span>
+                        <span class="project-location">🇵🇸 Palestine</span>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">Home Financing Social Media Campaign</h3>
-                        <div class="project-meta">
-                            <span class="project-year">2023</span>
-                            <span class="project-location">🇵🇸 Palestine</span>
-                        </div>
-                        <span class="project-category">Graphic Design</span>
+                    <span class="project-category">Branding</span>
+                </div>
+            </div>
+
+            <!-- Project 4 - Home Financing -->
+            <div class="project-card graphic" data-category="graphic" onclick="window.location.href='project-details.html?id=4'">
+                <div class="project-image">
+                    <img src="projet02/122.png" alt="Home Financing">
+                    <div class="project-overlay">
+                        <button class="view-btn" onclick="event.stopPropagation(); window.location.href='project-details.html?id=4'">
+                            <i class="fas fa-eye"></i>
+                        </button>
                     </div>
                 </div>
-
-                <!-- UI/UX Project 5 - Mobile App -->
-                <div class="project-card ui" data-category="ui" data-id="5">
-                    <div class="project-image">
-                        <img src="projet05/0011.png" alt="Mobile App">
-                        <div class="project-overlay">
-                            <button class="view-btn" onclick="event.stopPropagation(); openProject(5)">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
+                <div class="project-info">
+                    <h3 class="project-title">Home Financing Social Media Campaign</h3>
+                    <div class="project-meta">
+                        <span class="project-year">2023</span>
+                        <span class="project-location">🇵🇸 Palestine</span>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">VOLTX Electronics E-commerce Website</h3>
-                        <div class="project-meta">
-                            <span class="project-year">2024</span>
-                            <span class="project-location">🇵🇸 Palestine</span>
-                        </div>
-                        <span class="project-category">UI/UX Design</span>
+                    <span class="project-category">Graphic Design</span>
+                </div>
+            </div>
+
+            <!-- Project 5 - VOLTX -->
+            <div class="project-card ui" data-category="ui" onclick="window.location.href='project-details.html?id=5'">
+                <div class="project-image">
+                    <img src="projet05/0011.png" alt="VOLTX">
+                    <div class="project-overlay">
+                        <button class="view-btn" onclick="event.stopPropagation(); window.location.href='project-details.html?id=5'">
+                            <i class="fas fa-eye"></i>
+                        </button>
                     </div>
                 </div>
+                <div class="project-info">
+                    <h3 class="project-title">VOLTX Electronics E-commerce Website</h3>
+                    <div class="project-meta">
+                        <span class="project-year">2024</span>
+                        <span class="project-location">🇵🇸 Palestine</span>
+                    </div>
+                    <span class="project-category">UI/UX Design</span>
+                </div>
+            </div>
 
-                <!-- Branding Project 6 - Brand System -->
-                <div class="project-card branding" data-category="branding" data-id="6">
-                    <div class="project-image">
-                        <img src="projet03/221.png" alt="Brand System">
-                        <div class="project-overlay">
-                            <button class="view-btn" onclick="event.stopPropagation(); openProject(6)">
-                                <i class="fas fa-eye"></i>
-                            </button>
-                        </div>
+            <!-- Project 6 - NAKHL -->
+            <div class="project-card branding" data-category="branding" onclick="window.location.href='project-details.html?id=6'">
+                <div class="project-image">
+                    <img src="projet03/221.png" alt="NAKHL">
+                    <div class="project-overlay">
+                        <button class="view-btn" onclick="event.stopPropagation(); window.location.href='project-details.html?id=6'">
+                            <i class="fas fa-eye"></i>
+                        </button>
                     </div>
-                    <div class="project-info">
-                        <h3 class="project-title">NAKHL Perfume Brand Identity</h3>
-                        <div class="project-meta">
-                            <span class="project-year">2024</span>
-                            <span class="project-location">🇵🇸 Palestine</span>
-                        </div>
-                        <span class="project-category">Branding</span>
+                </div>
+                <div class="project-info">
+                    <h3 class="project-title">NAKHL Perfume Brand Identity</h3>
+                    <div class="project-meta">
+                        <span class="project-year">2024</span>
+                        <span class="project-location">🇵🇸 Palestine</span>
                     </div>
+                    <span class="project-category">Branding</span>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
 <!-- ===== CLIENT TESTIMONIALS SECTION ===== -->
 <section id="testimonials" class="testimonials-section">
