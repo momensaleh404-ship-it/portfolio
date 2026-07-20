@@ -2193,5 +2193,126 @@ function initEliteStats() {
     }, 100);
     
     console.log('✅ Navbar glass effect activated');
+
+    // ===== FIX: HAMBURGER MENU - حل نهائي =====
+(function() {
+    'use strict';
+    
+    // تأكد من تحميل الصفحة
+    function initHamburger() {
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (!hamburger || !navLinks) {
+            console.error('❌ الهمبرغر أو القائمة غير موجودة');
+            return;
+        }
+        
+        console.log('✅ تم العثور على الهمبرغر والقائمة');
+        
+        // دالة فتح القائمة
+        function openMenu() {
+            hamburger.classList.add('active');
+            navLinks.classList.add('active');
+            navLinks.style.display = 'flex';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.position = 'fixed';
+            navLinks.style.top = '70px';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.background = 'rgba(255,255,255,0.98)';
+            navLinks.style.backdropFilter = 'blur(10px)';
+            navLinks.style.padding = '20px';
+            navLinks.style.boxShadow = '0 10px 30px rgba(0,0,0,0.1)';
+            navLinks.style.zIndex = '9999';
+            navLinks.style.borderRadius = '0 0 15px 15px';
+            navLinks.style.gap = '10px';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        // دالة إغلاق القائمة
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            navLinks.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+        
+        // تبديل القائمة
+        hamburger.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            if (navLinks.classList.contains('active')) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+        
+        // إغلاق عند الضغط على رابط
+        navLinks.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                closeMenu();
+            });
+        });
+        
+        // إغلاق عند الضغط خارج القائمة
+        document.addEventListener('click', function(e) {
+            if (navLinks.classList.contains('active')) {
+                if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+                    closeMenu();
+                }
+            }
+        });
+        
+        // إغلاق عند الضغط على Esc
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+        
+        // ضبط الحالة الأولية للشاشات الصغيرة
+        if (window.innerWidth <= 768) {
+            navLinks.style.display = 'none';
+        }
+        
+        // عند تغيير حجم الشاشة
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 768) {
+                // شاشة كبيرة: إظهار القائمة بشكل عادي
+                navLinks.style.display = 'flex';
+                navLinks.style.flexDirection = 'row';
+                navLinks.style.position = 'relative';
+                navLinks.style.top = 'auto';
+                navLinks.style.left = 'auto';
+                navLinks.style.right = 'auto';
+                navLinks.style.background = 'transparent';
+                navLinks.style.backdropFilter = 'none';
+                navLinks.style.padding = '0';
+                navLinks.style.boxShadow = 'none';
+                navLinks.style.zIndex = 'auto';
+                navLinks.style.borderRadius = '0';
+                navLinks.style.gap = '30px';
+                hamburger.classList.remove('active');
+                document.body.style.overflow = '';
+            } else {
+                // شاشة صغيرة: إخفاء القائمة إذا مش active
+                if (!navLinks.classList.contains('active')) {
+                    navLinks.style.display = 'none';
+                }
+            }
+        });
+        
+        console.log('✅ الهمبرغر يعمل بنجاح!');
+    }
+    
+    // تشغيل بعد تحميل الصفحة
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initHamburger);
+    } else {
+        initHamburger();
+    }
 })();
 
