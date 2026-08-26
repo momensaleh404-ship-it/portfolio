@@ -2880,7 +2880,9 @@ function loadProject() {
                 <div class="gallery-section">
                     <div class="gallery-grid">
                         <div class="gallery-main" onclick="openFullscreen('${p.images.main}')">
-                            <img src="${p.images.main}" alt="${p.title}" id="mainImage">
+                           <img src="${p.images.main}"
+     alt="${p.title} - ${p.category} by Momen Saleh"
+     id="mainImage">
                             <div class="gallery-main-overlay">
                                 <div class="gallery-main-badge">
                                     <i class="fas fa-expand-alt"></i>
@@ -2892,7 +2894,9 @@ function loadProject() {
                         <div class="gallery-thumbnails">
                             ${p.images.thumbnails.map((thumb, index) => `
                                 <div class="gallery-thumb ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${thumb}', ${index})">
-                                    <img src="${thumb}" alt="Thumbnail">
+                                   <img src="${thumb}"
+     alt="${p.title} - ${p.category} design by Momen Saleh"
+     loading="lazy">
                                 </div>
                             `).join('')}
                         </div>
