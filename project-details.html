@@ -2763,24 +2763,48 @@ images: {
         let currentProject = null;
         let currentImages = [];
         let currentImageIndex = 0;
+// تحميل المشروع
+function loadProject() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const projectId = urlParams.get('id');
 
-        // تحميل المشروع
-        function loadProject() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const projectId = urlParams.get('id');
-            
-            if (!projectId || !projectsData[projectId]) {
-                window.location.href = 'index.html';
-                return;
-            }
-            
-            const project = projectsData[projectId];
-            currentProject = project;
-            currentImages = [project.images.main, ...project.images.thumbnails, ...(project.images.gallery || [])];
-            
-            displayProject(project);
-            document.title = `${project.titleAr || project.title} | Momen Saleh`;
-        }
+    if (!projectId || !projectsData[projectId]) {
+        window.location.href = 'index.html';
+        return;
+    }
+
+    const project = projectsData[projectId];
+
+    currentProject = project;
+    currentImages = [
+        project.images.main,
+        ...project.images.thumbnails,
+        ...(project.images.gallery || [])
+    ];
+
+    displayProject(project);
+
+    // ===== Dynamic SEO for each project =====
+    document.title = `${project.title} | ${project.category} by Momen Saleh`;
+
+    const metaDescription = document.getElementById('metaDescription');
+
+    if (metaDescription) {
+        metaDescription.setAttribute(
+            'content',
+            `${project.title} by Momen Saleh - ${project.category}. ${project.shortDesc || project.description}`
+        );
+    }
+
+    const canonicalUrl = document.getElementById('canonicalUrl');
+
+    if (canonicalUrl) {
+        canonicalUrl.setAttribute(
+            'href',
+            `https://momen-portfolio.pages.dev/project-details.html?id=${project.id}`
+        );
+    }
+}
 
         // عرض المشروع
         function displayProject(p) {
